@@ -10,19 +10,26 @@ us_cities = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/maste
 us_cities = us_cities.query("State in ['New York', 'Ohio']")
 
 fig = px.line_mapbox(us_cities, lat="lat", lon="lon", color="State",
-                     width=1600,
-                     height=1600)
+                     width=3200,
+                     height=1024,
+                     )
 
-fig.update_layout(mapbox_style="stamen-terrain", mapbox_zoom=4, mapbox_center_lat=41,
-                  margin={"r": 0, "t": 0, "l": 0, "b": 0})
+fig.update_layout(mapbox_style="open-street-map", mapbox_zoom=4, mapbox_center_lat=41,
+                  margin={"r": 0, "t": 0, "l": 0, "b": 0},
+                  showlegend=False
+                  )
 
-layout = dcc.Graph(id="mapa",
-              figure=fig,
-              # config={
-              #     'displaylogo': False,
-                  # 'modeBarButtonsToRemove': ['select2d', 'lasso2d']
-              # }
-              )
+layout = html.Div(children=[dcc.Graph(id="mapa",
+                                      figure=fig,
+                                      className='box'
+                                      ),
+                            html.Div(className='box stack-top',
+                                     style={'background': 'blue'})
+                            ],
+                  style={'overflow': 'hidden',
+                         },
+                  # className="container"
+                  )
 
 
 dash.register_page(os.path.basename(__file__),
