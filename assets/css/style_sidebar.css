@@ -1,0 +1,111 @@
+/*
+############################################
+                  SIDEBAR
+############################################
+*/
+/* This creates a skinny side bar fixed to the left of the page */
+.sidebar {
+  position: fixed;
+  top: 0vh;
+  left: 0;
+  bottom: 0;
+  width: 5rem;
+  padding: 2rem 1rem;
+  background-color: #04747c; /*#f8f9fa;*/
+  z-index: 2;
+  transition: width 0.1s ease-in-out;
+  color: white;
+  border-right: none;
+
+}
+
+/* when the user hovers on the sidebar, expand it */
+.sidebar:hover {
+  width: 16rem;
+}
+
+/* make sure the contents of the navlink don't wrap when navbar collapses */
+.sidebar .nav-link {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  color: white;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #eb850a;
+    color: #515151;
+}
+
+/* fix the width of the icons */
+.sidebar .nav-link i {
+  width: 1rem;
+  color: white;
+}
+
+.sidebar .nav-link.active i {
+  color: #515151;
+}
+
+/* hide the navlink labels by default */
+.sidebar .nav-link span {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+/* when the sidebar is hovered, reveal the labels */
+.sidebar:hover .nav-link span {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* container for the sidebar header. make sure the contents don't wrap when
+ * the sidebar is collapsed.
+ */
+.sidebar-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* position the header relative to the logo and hide by default */
+.sidebar-header h2 {
+  opacity: 0;
+  margin-left: 1rem;
+  margin-bottom: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+/* reveal the header when the sidebar is toggled */
+.sidebar:hover .sidebar-header h2 {
+  opacity: 1;
+}
+
+/* position the content relative to the collapsed sidebar */
+.content {
+  margin-left: 7rem;
+  margin-right: 2rem;
+  padding: 2rem 1rem;
+}
+
+.sidebar_title{
+    margin-left: 0.5rem;
+}
+
+.text_sidebar_footer1 {
+    color: white;
+    text-align: center;
+    /*margin-top: calc(-200px + (650 - 50) * ((100vw - 480px) / 1200)) !important;*/
+    position: absolute;
+    bottom: 0;
+    font-family: Arial;
+    /*font-size: calc(9px + (8 - 5) * ((100vw - 480px) / 1200)) !important;*/
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+.sidebar:hover .text_sidebar_footer1 {
+  opacity: 1;
+}

@@ -4,12 +4,12 @@
 """
 import logging
 import os
-import sys
 from logging.handlers import TimedRotatingFileHandler
+import sys
 
 
 def setLogger() -> logging.Logger:
-    nameLogger = "FrontEndAlerion"
+    nameLogger = "map_app"
     logger = logging.getLogger(nameLogger)
     logger.setLevel(logging.INFO)
     folder = 'log'
@@ -31,3 +31,6 @@ def setLogger() -> logging.Logger:
 
 
 LOGGER = setLogger()
+
+
+from .reader_configuration_system import *
