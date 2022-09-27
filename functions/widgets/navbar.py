@@ -2,21 +2,22 @@ import configparser
 import datetime
 
 import dash_bootstrap_components as dbc
-from dash import html, dcc, callback, Input, Output
+from dash import html, callback, Input, Output
 
 from configuration import LOGGER
 from functions.functions import define_id
 
 
-class Sidebar:
+class Navbar:
     def __init__(self, path: str = None):
         self._path = None
         if path is None:
-            self._path = r'assets\parser_widgets\sidebar.ini'
+            self._path = r'assets\parser_widgets\upperbar.ini'
         else:
             self._path = path
         self._sidebar_dict = None
         self.layout = None
+        self._logo = False
         self._version = 'v1.0.0'
         self.id_version_timestamp = define_id('menu', 'sidebar')
         self.id_interval = define_id('menu', 'interval')
@@ -57,40 +58,32 @@ class Sidebar:
             return layout
 
     def _create_sidebar(self):
-        self.layout = html.Div(
-            [
-                html.Div(
-                    [
-                        html.Img(src=r'assets/imgs/maps_app.png', style={"width": "3rem"}),
-                        html.H5("Maps app", className='sidebar_title'),
-                    ],
-                    className="sidebar-header",
-                ),
-                html.Hr(),
-                dbc.Nav(
-                    [
-                        dbc.NavLink(
-                            [html.I(className=self._sidebar_dict[i]['icon']),
-                             html.Span(self._sidebar_dict[i]['name'])],
-                            href=self._sidebar_dict[i]['ref'],
-                            active=self._sidebar_dict[i]['active'],
-                        ) for i in self._sidebar_dict
-                    ],
-                    vertical=True,
-                    pills=True,
-                ),
-                html.Div(children=self._version,
-                         className='text_sidebar_footer1',
-                         id=self.id_version_timestamp),
-                dcc.Interval(
-                    id=self.id_interval,
-                    interval=1000,
-                    n_intervals=0
-                )
-            ],
-            className="sidebar",
-        )
 
-        self._add_callback()
+        part_1_logo = html.Div(className='no_logo', children=' --- ')
+
+        if self._logo:
+            part_1_logo = html.Div(
+                [
+                    html.Img(src=r'assets/imgs/maps_app.png', style={"width": "3rem"}),
+                    html.H5("Maps app", className='sidebar_title'),
+                ],
+                className="sidebar-header custom_margins",
+            )
+
+        part_2_menu = [
+            dbc.NavLink(
+                [html.I(className=self._sidebar_dict[i]['icon']),
+                 html.Span(self._sidebar_dict[i]['name'])],
+                href=self._sidebar_dict[i]['ref'],
+                active=self._sidebar_dict[i]['active'],
+            ) for i in self._sidebar_dict
+        ]
+
+        self.layout = html.Div(
+                    [*part_1_logo,  *part_2_menu],
+                    className='scrollmenu',
+             )
+
+        # self._add_callback()
 
         return self.layout

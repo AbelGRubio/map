@@ -21,7 +21,7 @@
 
 /* when the user hovers on the sidebar, expand it */
 .sidebar:hover {
-  width: 16rem;
+  width: 12rem;
 }
 
 /* make sure the contents of the navlink don't wrap when navbar collapses */
@@ -98,14 +98,86 @@
 .text_sidebar_footer1 {
     color: white;
     text-align: center;
-    /*margin-top: calc(-200px + (650 - 50) * ((100vw - 480px) / 1200)) !important;*/
     position: absolute;
     bottom: 0;
     font-family: Arial;
-    /*font-size: calc(9px + (8 - 5) * ((100vw - 480px) / 1200)) !important;*/
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
 }
 .sidebar:hover .text_sidebar_footer1 {
   opacity: 1;
 }
+
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color:  #04747c;
+  overflow: hidden;
+  margin-left: 5.7em;
+  z-index: 1;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #eb850a;
+  color: white;
+}
+
+.custom_margins {
+    /*margin-right: 10px;
+    margin-left: 5px;*/
+}
+
+no_logo{
+  margin-left: 5.7em;
+}
+
+
+div.scrollmenu {
+  background-color: #04747c;
+  overflow: auto;
+  white-space: nowrap;
+  /*margin-left: 5.7em;*/
+  z-index: 1;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a.active {
+  background-color: #eb850a;
+  color: white;
+}
+
+
+div.scrollmenu a:hover {
+  background-color: #ddd;
+}
+
+
+
+
+
